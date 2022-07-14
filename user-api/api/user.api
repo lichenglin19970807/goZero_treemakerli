@@ -1,0 +1,22 @@
+syntax = "v1"
+
+info(
+	author: "type author here"
+	version: "type version here"
+)
+
+type (
+	UserInfoReq {
+		UserId int64 `json:"userId"`
+	}
+	UserInfoResp {
+		UserId   int64  `json:"userId"`
+		Nickname string `json:"nickname"`
+	}
+)
+
+service user-api {
+	@doc "获取用户信息"
+	@handler UserInfo
+	post /user/info (UserInfoReq) returns (UserInfoResp)
+}
